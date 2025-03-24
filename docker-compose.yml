@@ -7,7 +7,7 @@ services:
     ports:
       - "8001:8001"
     volumes:
-      - ./service:/app
+      - ./service:/service
     depends_on:
       - db
     env_file: '.env'
@@ -28,15 +28,15 @@ services:
   
   docs:
     build:
-      context: ./service
+      context: .
       dockerfile: Mkdocsfile
     container_name: plantagora_docs
     ports:
       - "8002:8002"
     volumes:
-      - ./service:/service 
-      - ./service/docs:/docs 
-    command: mkdocs serve --dev-addr=0.0.0.0:8002 --watch /docs --watch /src
+      - ${PWD}:/app
+      - ${PWD}/docs:/app/docs
+    command: mkdocs serve --dev-addr=0.0.0.0:8002 --watch-theme --watch=/app
     restart: always
 
 volumes:

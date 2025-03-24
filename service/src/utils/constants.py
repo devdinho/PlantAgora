@@ -1,17 +1,19 @@
 from enum import Enum
 
+
 class ProfileType(Enum):
     """Enum representando diferentes tipos de Perfis de Usuários.
-    
+
     Atributos:
         ADMIN (int): Administrador, usuário com permissões de administrador.
         DEVELOPER (int): Desenvolvedor, usuário com permissões de desenvolvedor.
         GARDENER (int): Hortelão/Produtor, usuário com permissões de hortelão/produtor.
     """
+
     ADMIN = 1
     DEVELOPER = 2
     GARDENER = 3
-    
+
 
 class DocumentType(Enum):
     """Enum representando diferentes tipos de Documentos.
@@ -27,6 +29,7 @@ class DocumentType(Enum):
         CTPS (int): Carteira de Trabalho e Previdência Social, carteira de trabalho e previdência social no Brasil.
         OTHER (int): Qualquer outro tipo de documento não listado acima.
     """
+
     CPF = 1
     CNPJ = 2
     RG = 3
@@ -36,7 +39,7 @@ class DocumentType(Enum):
     CNH = 7
     CTPS = 8
     OTHER = 9
-    
+
 
 class Status(Enum):
     """Enum representando diferentes status de objetos.
@@ -45,5 +48,6 @@ class Status(Enum):
         ACTIVE (int): Ativo, objeto ativo.
         INACTIVE (int): Inativo, objeto inativo.
     """
+
     ACTIVE = 1
     INACTIVE = 2

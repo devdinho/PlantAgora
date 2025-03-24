@@ -33,6 +33,7 @@ plugins:
       scripts:
         - gen_doc_stubs.py
   - search
+  - autorefs
   - mkdocstrings:
       default_handler: python
       handlers:

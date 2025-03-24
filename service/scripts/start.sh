@@ -17,4 +17,4 @@ python src/manage.py shell -c "from authentication.models import Profile; \
                            email='admin@example.com', password='123', profileType=1)"
                            
 cd src || exit
-gunicorn --config gunicorn_config.py src.plantagora.wsgi:application
+gunicorn --workers 4 --bind 0.0.0.0:8001 --chdir /service/ src.plantagora.wsgi:application
