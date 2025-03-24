@@ -1,0 +1,43 @@
+services:
+  django:
+    container_name: plantagora_service
+    build:
+      context: ./service
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./service:/service
+    depends_on:
+      - db
+    env_file: '.env'
+    restart: always
+
+  db:
+    env_file: '.env'
+    container_name: plantagora_db
+    image: postgres:17
+    environment:
+      POSTGRES_DB: plantagora_db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  
+  docs:
+    build:
+      context: .
+      dockerfile: Mkdocsfile
+    container_name: plantagora_docs
+    ports:
+      - "8002:8002"
+    volumes:
+      - ${PWD}:/app
+      - ${PWD}/docs:/app/docs
+    command: mkdocs serve --dev-addr=0.0.0.0:8002 --watch-theme --watch=/app
+    restart: always
+
+volumes:
+  postgres_data:
