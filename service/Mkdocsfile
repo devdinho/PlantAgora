@@ -1,0 +1,12 @@
+FROM python:3.12.6-alpine
+
+WORKDIR /app
+
+COPY docs /app/docs
+COPY src /app/src
+COPY mkdocs.yml /app/mkdocs.yml
+COPY gen_doc_stubs.py /app/gen_doc_stubs.py
+
+RUN pip install mkdocs pymdown-extensions mkdocs-material mkdocstrings[python] mkdocs-gen-files
+
+EXPOSE 8002
