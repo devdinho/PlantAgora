@@ -6,6 +6,17 @@ import uuid
 
 
 class Grower(models.Model):
+    """Modelo de Produtor/Hortleão.
+    Uma instância deste modelo representa um Produtor/Hortelão.
+    
+    Atributos:
+        - id (uuid.UUID): ID do produtor gerado ao salvar e não editável.
+        - name (str): Nome do produtor.
+        - document (str): Documento do produtor.
+        - documentType (str): Tipo de documento do produtor baseado em contants do arquivo [contants.DocumentType](../../../utils/constants#service.src.utils.constants.DocumentType).
+        - profile (Profile): Perfil de Usuário do produtor.
+    """
+    
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField("Name", max_length=100)
 

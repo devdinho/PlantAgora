@@ -4,6 +4,14 @@ import uuid
 
 
 class Garden(models.Model):
+    """Modelo de horta.
+    Uma instância deste modelo representa uma horta.
+    
+    Atributos:
+        - name (str): Nome da horta.
+        - code (str): Código da horta gerado ao salvar e não editável.
+        - status (str): Status da horta baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
+    """
     name = models.CharField("Name", max_length=100)
     code = models.CharField("Code", max_length=10, unique=True, editable=False)
     status = models.CharField(

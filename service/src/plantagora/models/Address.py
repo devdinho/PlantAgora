@@ -7,10 +7,19 @@ import uuid
 
 
 class Address(models.Model):
-    """
-    Modelo de endereço.
-
+    """Modelo de endereço.
     Uma instância deste modelo representa um endereço de uma Horta.
+    
+    Atributos:
+        - id (uuid.UUID): ID do endereço gerado ao salvar e não editável.
+        - garden (Garden): Horta a qual o endereço pertence.
+        - street (str): Rua do endereço.
+        - number (str): Número do endereço.
+        - complement (str): Complemento do endereço.
+        - zip_code (str): CEP do endereço.
+        - city (str): Cidade do endereço.
+        - state (str): Estado do endereço.
+        - status (str): Status do endereço baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
     """
 
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
@@ -45,7 +54,7 @@ class Address(models.Model):
         verbose_name_plural = "Addresses"
 
     def __str__(self):
-        return f"{self.street}, {self.number} - {self.city}/{self.state}"
+        return f"{self.street}, {self.number} ({self.zip_code})- {self.city}/{self.state}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
