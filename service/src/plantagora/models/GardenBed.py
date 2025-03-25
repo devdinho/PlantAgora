@@ -7,6 +7,16 @@ import uuid
 
 
 class GardenBed(models.Model):
+    """Modelo de canteiro.
+    Uma instância deste modelo representa um canteiro de uma horta.
+    
+    Atributos:
+        - id (uuid.UUID): ID do canteiro gerado ao salvar e não editável.
+        - code (str): Código do canteiro gerado ao salvar e não editável.
+        - garden (Garden): Horta a qual o canteiro pertence.
+        - signature (Signature): Assinatura do canteiro.
+        - status (str): Status do canteiro baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
+    """
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField("Code", max_length=10, unique=True, editable=False)
 

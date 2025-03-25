@@ -5,6 +5,18 @@ import uuid
 
 
 class Signature(models.Model):
+    """Modelo de assinatura.
+    Uma instância deste modelo representa uma assinatura de um produtor em uma horta.
+    
+    Atributos:
+        - id (uuid.UUID): ID da assinatura gerado ao salvar e não editável.
+        - garden (Garden): Horta assinada.
+        - grower (Grower): Produtor que assinou a horta.
+        - status (str): Status da assinatura baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
+        - releasedAt (datetime): Data de liberação da assinatura.
+        - updatedAt (datetime): Data de atualização da assinatura.
+        - endedAt (datetime): Data de término da assinatura.
+    """
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
     garden = models.ForeignKey(
         Garden,

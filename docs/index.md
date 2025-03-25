@@ -1,17 +1,45 @@
-# Welcome to MkDocs
+# PlantAgora
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Boas vindas à documentação do PlantAgora
 
-## Commands
+### Visão Geral
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+PlantAgora é uma aplicação web baseada em Django e React, projetada para monitorar e gerenciar informações sobre as hortas comunitárias.
 
-## Project layout
+### Funcionalidades
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- Autenticação de usuário e gerenciamento de perfil
+- Design responsivo para dispositivos móveis e desktop
+- Documentação do Service (Backend)
+
+### Instalação
+
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/devdinho/plantagora.git
+    ```
+2. Navegue até o diretório do projeto:
+    ```bash
+    cd plantagora
+    ```
+3. Construa e inicie os contêineres Docker:
+    ```bash
+    docker-compose up --build
+    ```
+
+### Uso
+
+1. Abra seu navegador web e vá para `http://localhost:8001/`.
+
+
+### Contribuindo
+
+Nós aceitamos contribuições! Por favor, leia nossas [Diretrizes de Contribuição](CONTRIBUTING.md) para mais informações.
+
+### Licença
+
+Este projeto é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+### Contato
+
+Para quaisquer dúvidas ou feedback, por favor, entre em contato conosco.
