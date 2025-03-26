@@ -15,7 +15,7 @@ class GardenBed(models.Model):
         - code (str): Código do canteiro gerado ao salvar e não editável.
         - garden (Garden): Horta a qual o canteiro pertence.
         - signature (Signature): Assinatura do canteiro.
-        - status (str): Status do canteiro baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
+        - status (str): Status do canteiro baseado em contants do arquivo [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
     """
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField("Code", max_length=10, unique=True, editable=False)

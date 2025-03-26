@@ -13,7 +13,7 @@ class Grower(models.Model):
         - id (uuid.UUID): ID do produtor gerado ao salvar e não editável.
         - name (str): Nome do produtor.
         - document (str): Documento do produtor.
-        - documentType (str): Tipo de documento do produtor baseado em contants do arquivo [contants.DocumentType](../../../utils/constants#service.src.utils.constants.DocumentType).
+        - documentType (int): Tipo de documento do produtor baseado em contants do arquivo [contants.DocumentType](../../utils/constants.md#service.src.utils.constants.DocumentType).
         - profile (Profile): Perfil de Usuário do produtor.
     """
     
@@ -21,9 +21,8 @@ class Grower(models.Model):
     name = models.CharField("Name", max_length=100)
 
     document = models.CharField("Document", max_length=20)
-    documentType = models.CharField(
+    documentType = models.IntegerField(
         "Document Type",
-        max_length=1,
         choices=[
             (documentType.value, documentType.name) for documentType in DocumentType
         ],

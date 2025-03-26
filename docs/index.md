@@ -29,17 +29,5 @@ PlantAgora é uma aplicação web baseada em Django e React, projetada para moni
 
 ### Uso
 
-1. Abra seu navegador web e vá para `http://localhost:8001/`.
-
-
-### Contribuindo
-
-Nós aceitamos contribuições! Por favor, leia nossas [Diretrizes de Contribuição](CONTRIBUTING.md) para mais informações.
-
-### Licença
-
-Este projeto é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-### Contato
-
-Para quaisquer dúvidas ou feedback, por favor, entre em contato conosco.
+1. Abra seu navegador web e vá para `http://localhost:8001/` para acessar a aplicação.
+1. Abra seu navegador web e vá para `http://localhost:8002/` para acessar a documentação.

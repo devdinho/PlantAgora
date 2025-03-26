@@ -28,6 +28,10 @@ theme:
     - navigation.instant
     - navigation.tabs
 
+watch:
+  - docs
+  - service
+
 plugins:
   - gen-files:
       scripts:

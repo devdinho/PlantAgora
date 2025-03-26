@@ -1,6 +1,7 @@
 from pathlib import Path
 import mkdocs_gen_files
-list_of_files = ["__init__.py", "apps.py", "gunicorn_config.py", "urls.py", "views.py", "manage.py","asgi.py","wsgi.py", "base.py", "env.py"]
+
+list_of_files = ["__init__.py", "apps.py", "gunicorn_config.py", "urls.py", "views.py", "manage.py", "asgi.py","wsgi.py", "base.py", "env.py"]
 
 src_root = Path("service/src")
 
