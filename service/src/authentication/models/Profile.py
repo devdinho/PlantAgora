@@ -19,7 +19,7 @@ class Profile(AbstractUser):
         - date_joined (datetime): Data e hora em que este usuário foi adicionado.
         
     Atributos adicionais:
-        - profileType (str): Tipo de perfil baseado em contants do arquivo [contants.ProfileType](../../../utils/constants#service.src.utils.constants.ProfileType).
+        - profileType (str): Tipo de perfil baseado em contants do arquivo [contants.ProfileType](../../utils/constants.md#service.src.utils.constants.ProfileType).
         - groups (Group): Grupos de permissões aos quais este usuário pertence.
         - user_permissions (Permission): Permissões específicas para este usuário
     """

@@ -28,8 +28,12 @@ class DocumentType(Enum):
         - CNH (int): Carteira Nacional de Habilitação, carteira de motorista no Brasil.
         - CTPS (int): Carteira de Trabalho e Previdência Social, carteira de trabalho e previdência social no Brasil.
         - OTHER (int): Qualquer outro tipo de documento não listado acima.
+        
+    Observação:
+        - Os valores dos atributos são inteiros e representam o tipo de documento
+          de acordo com a lista acima. O campo que armazena o valor do documento é do tipo str.
     """
-
+    
     CPF = 1
     CNPJ = 2
     RG = 3

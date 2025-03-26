@@ -10,7 +10,7 @@ class Garden(models.Model):
     Atributos:
         - name (str): Nome da horta.
         - code (str): Código da horta gerado ao salvar e não editável.
-        - status (str): Status da horta baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
+        - status (str): Status da horta baseado em contants do arquivo [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
     """
     name = models.CharField("Name", max_length=100)
     code = models.CharField("Code", max_length=10, unique=True, editable=False)

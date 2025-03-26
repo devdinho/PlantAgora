@@ -12,7 +12,7 @@ class Signature(models.Model):
         - id (uuid.UUID): ID da assinatura gerado ao salvar e não editável.
         - garden (Garden): Horta assinada.
         - grower (Grower): Produtor que assinou a horta.
-        - status (str): Status da assinatura baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
+        - status (str): Status da assinatura baseado em contants do arquivo [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
         - releasedAt (datetime): Data de liberação da assinatura.
         - updatedAt (datetime): Data de atualização da assinatura.
         - endedAt (datetime): Data de término da assinatura.

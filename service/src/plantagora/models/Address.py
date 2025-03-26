@@ -19,7 +19,7 @@ class Address(models.Model):
         - zip_code (str): CEP do endereço.
         - city (str): Cidade do endereço.
         - state (str): Estado do endereço.
-        - status (str): Status do endereço baseado em contants do arquivo [contants.Status](../../../utils/constants#service.src.utils.constants.Status).
+        - status (str): Status do endereço baseado em contants do arquivo [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
     """
 
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)

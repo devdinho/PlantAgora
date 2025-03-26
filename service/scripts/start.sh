@@ -15,6 +15,3 @@ python src/manage.py shell -c "from authentication.models import Profile; \
                            Profile.objects.filter(username='admin').exists() or \
                            Profile.objects.create_superuser(username='admin',
                            email='admin@example.com', password='123', profileType=1)"
-                           
-cd src || exit
-gunicorn --workers 4 --bind 0.0.0.0:8001 --chdir /service/ src.plantagora.wsgi:application
