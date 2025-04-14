@@ -1,12 +1,12 @@
 from django.db import models
 from utils.constants import Status
 
-from plantagora.models import Garden
+from simple_history.models import HistoricalRecords
 
-import uuid
+from plantagora.models import BaseAddress, Garden
 
 
-class Address(models.Model):
+class GardenAddress(BaseAddress):
     """Modelo de endereço.
     Uma instância deste modelo representa um endereço de uma Horta.
     
@@ -21,9 +21,8 @@ class Address(models.Model):
         - state (str): Estado do endereço.
         - status (str): Status do endereço baseado em contants do arquivo [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
     """
-
-    id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
-
+    history = HistoricalRecords()
+    
     garden = models.ForeignKey(
         Garden,
         on_delete=models.CASCADE,
@@ -32,29 +31,18 @@ class Address(models.Model):
         related_query_name="address",
     )
 
-    street = models.CharField("Street", max_length=100)
-    number = models.CharField("Number", max_length=10)
-
-    complement = models.CharField("Complement", max_length=100, blank=True, null=True)
-
-    zip_code = models.CharField("Zip Code", max_length=8)
-
-    city = models.CharField("City", max_length=100)
-    state = models.CharField("State", max_length=2)
-
-    status = models.CharField(
-        "Status",
-        max_length=1,
-        choices=[(status.value, status.name) for status in Status],
-        default=Status.ACTIVE.value,
+    status = models.IntegerField(
+        verbose_name="Status",
+        choices=Status.STATUS_CHOICES,
+        default=Status.ACTIVE,
     )
 
     class Meta:
-        verbose_name = "Address"
-        verbose_name_plural = "Addresses"
+        verbose_name = "Garden Address"
+        verbose_name_plural = "Garden Addresses"
 
     def __str__(self):
-        return f"{self.street}, {self.number} ({self.zip_code})- {self.city}/{self.state}"
+        return f"{self.street}, {self.number} ({self.zip_code})- {self.city}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

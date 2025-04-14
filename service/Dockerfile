@@ -1,16 +1,20 @@
 FROM python:3.12.6-alpine
 
-WORKDIR /service
+WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY requirements.txt /service/requirements.txt
+RUN apk add --no-cache gcc musl-dev libffi-dev openssl-dev postgresql-dev \
+    && pip install poetry \
+    && poetry config virtualenvs.create false
 
-RUN pip install -r requirements.txt --no-cache-dir
+COPY pyproject.toml poetry.lock ./
 
-COPY . /service
+RUN poetry install --no-root
+
+COPY . .
 
 EXPOSE 8001
 
-CMD sh -c /service/scripts/start.sh
+CMD ["sh", "./scripts/start.sh"]

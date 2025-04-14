@@ -1,6 +1,10 @@
-from authentication.models import Profile
 from django.db import models
-from utils.constants import DocumentType
+from simple_history.models import HistoricalRecords
+
+from authentication.models import Profile
+from plantagora.models import BaseAddress
+
+from utils.constants import DocumentType, LevelOfEducation
 
 import uuid
 
@@ -16,24 +20,37 @@ class Grower(models.Model):
         - documentType (int): Tipo de documento do produtor baseado em contants do arquivo [contants.DocumentType](../../utils/constants.md#service.src.utils.constants.DocumentType).
         - profile (Profile): Perfil de Usuário do produtor.
     """
+    history = HistoricalRecords()
     
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField("Name", max_length=100)
-
+    
+    caf = models.CharField("CAF", max_length=9, help_text='Cadastro Nacional da Agricultura Familiar ou ao Número de Autorização Centralizada', blank=True, null=True)
+    
+    address = models.ForeignKey(
+        BaseAddress,
+        on_delete=models.CASCADE,
+        verbose_name="Address",
+        null=True,
+        blank=True,
+    )
+    
+    levelOfEducation = models.IntegerField(
+        "Level of Education",
+        choices=LevelOfEducation.LEVEL_OF_EDUCATION_CHOICES,
+        default=LevelOfEducation.BASIC,
+    )
+    
     document = models.CharField("Document", max_length=20)
     documentType = models.IntegerField(
         "Document Type",
-        choices=[
-            (documentType.value, documentType.name) for documentType in DocumentType
-        ],
-        default=DocumentType.CPF.value,
+        choices=DocumentType.DOCUMENT_TYPE_CHOICES,
+        default=DocumentType.CPF,
     )
-    profile = models.OneToOneField(
+    
+    profile = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
         verbose_name="Profile",
-        related_name="grower",
-        related_query_name="grower",
     )
 
     def __str__(self):
