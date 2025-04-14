@@ -1,5 +1,8 @@
-from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from django.contrib.auth.models import AbstractUser, Group, Permission
+
+from simple_history.models import HistoricalRecords
+
 from utils.constants import ProfileType
 
 
@@ -23,12 +26,12 @@ class Profile(AbstractUser):
         - groups (Group): Grupos de permissões aos quais este usuário pertence.
         - user_permissions (Permission): Permissões específicas para este usuário
     """
+    history = HistoricalRecords()
 
-    profileType = models.CharField(
+    profileType = models.IntegerField(
         "Tipo de Perfil",
-        max_length=1,
-        choices=[(profileType.value, profileType.name) for profileType in ProfileType],
-        default=ProfileType.GARDENER.value,
+        choices=ProfileType.PROFILE_TYPE_CHOICES,
+        default=ProfileType.GARDENER,
     )
 
     groups = models.ManyToManyField(

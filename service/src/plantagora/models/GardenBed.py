@@ -1,6 +1,7 @@
 from django.db import models
+from simple_history.models import HistoricalRecords
 
-from plantagora.models import Garden, Signature
+from plantagora.models import Garden, Signature, GardenAddress
 
 from utils.constants import Status
 import uuid
@@ -17,6 +18,8 @@ class GardenBed(models.Model):
         - signature (Signature): Assinatura do canteiro.
         - status (str): Status do canteiro baseado em contants do arquivo [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
     """
+    history = HistoricalRecords()
+    
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField("Code", max_length=10, unique=True, editable=False)
 
@@ -27,6 +30,17 @@ class GardenBed(models.Model):
         related_name="gardenBeds",
         related_query_name="gardenBed",
     )
+    
+    garden_address = models.ForeignKey(
+        GardenAddress,
+        on_delete=models.CASCADE,
+        verbose_name="Garden Address",
+        related_name="gardenBeds",
+        related_query_name="gardenBed",
+        null=True,
+        blank=True,
+    )
+    
     signature = models.ForeignKey(
         Signature,
         on_delete=models.CASCADE,
@@ -35,11 +49,10 @@ class GardenBed(models.Model):
         related_query_name="gardenBed",
     )
 
-    status = models.CharField(
+    status = models.IntegerField(
         "Status",
-        max_length=1,
-        choices=[(status.value, status.name) for status in Status],
-        default=Status.ACTIVE.value,
+        choices=Status.STATUS_CHOICES,
+        default=Status.ACTIVE,
     )
 
     class Meta:
@@ -47,9 +60,9 @@ class GardenBed(models.Model):
         verbose_name_plural = "Garden Beds"
 
     def __str__(self):
-        return self.name
+        return "{} - {} ({})".format(self.code, self.garden, self.garden_address)
 
     def save(self, *args, **kwargs):
         if not self.code:
-            self.code = f"B-{uuid.uuid4().hex[:8]}"
+            self.code = f"C-{uuid.uuid4().hex[:8]}"
         super().save(*args, **kwargs)

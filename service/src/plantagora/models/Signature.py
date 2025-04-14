@@ -1,6 +1,10 @@
 from django.db import models
+from simple_history.models import HistoricalRecords
+
 from plantagora.models import Garden, Grower
-from utils.constants import Status
+from utils.constants import Status, SignatureValidationMonths
+
+from datetime import datetime
 import uuid
 
 
@@ -17,6 +21,8 @@ class Signature(models.Model):
         - updatedAt (datetime): Data de atualização da assinatura.
         - endedAt (datetime): Data de término da assinatura.
     """
+    history = HistoricalRecords()
+    
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
     garden = models.ForeignKey(
         Garden,
@@ -33,16 +39,20 @@ class Signature(models.Model):
         related_query_name="signature",
     )
 
-    status = models.CharField(
+    duration = models.IntegerField(
+        "Duration",
+        choices=SignatureValidationMonths.SIGNATURE_VALIDATION_MONTHS_CHOICES,
+        default=SignatureValidationMonths.TWELVE_MONTHS,
+    )
+    
+    status = models.IntegerField(
         "Status",
-        max_length=1,
-        choices=[(status.value, status.name) for status in Status],
-        default=Status.ACTIVE.value,
+        choices=Status.STATUS_CHOICES,
+        default=Status.ACTIVE,
     )
 
-    releasedAt = models.DateTimeField("Released At", auto_now_add=True)
+    releasedAt = models.DateTimeField("Released At", default=datetime.now)
     updatedAt = models.DateTimeField("Updated At", auto_now=True)
-    endedAt = models.DateTimeField("Ended At", null=True, blank=True)
 
     class Meta:
         verbose_name = "Signature"
