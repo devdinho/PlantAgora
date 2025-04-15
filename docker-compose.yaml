@@ -39,15 +39,5 @@ services:
     command: mkdocs serve --dev-addr=0.0.0.0:8002 --dirtyreload --watch /app/docs
     restart: always
 
-  frontend:
-    container_name: plantagora_web
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    environment:
-      NODE_ENV: production
-    ports:
-      - 3000:3000
-
 volumes:
   postgres_data:
