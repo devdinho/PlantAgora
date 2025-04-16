@@ -1,6 +1,3 @@
-from enum import Enum
-
-
 class ProfileType(object):
     """Object representando diferentes tipos de Perfis de Usuários.
 
@@ -20,12 +17,13 @@ class ProfileType(object):
         (GARDENER, "Hortelão/Produtor"),
     )
 
+
 class DocumentType(object):
     """Object representando diferentes tipos de Documentos.
 
     Atributos:
         - CPF (int): Cadastro de Pessoas Físicas, identificação do registro de contribuintes individuais no Brasil.
-        - CNPJ (int): Cadastro Nacional da Pessoa Jurídica, identificação nacional do registro de entidades legais no Brasil.
+        - CNPJ (int): Cadastro Nacional da Pessoa Jurídica, identificação do registro de entidades legais no Brasil.
         - RG (int): Registro Geral, identificação geral no Brasil.
         - IE (int): Inscrição Estadual, registro estadual no Brasil.
         - IM (int): Inscrição Municipal, registro municipal no Brasil.
@@ -33,21 +31,22 @@ class DocumentType(object):
         - CNH (int): Carteira Nacional de Habilitação, carteira de motorista no Brasil.
         - CTPS (int): Carteira de Trabalho e Previdência Social, carteira de trabalho e previdência social no Brasil.
         - OTHER (int): Qualquer outro tipo de documento não listado acima.
-        
+
     Observação:
         - Os valores dos atributos são inteiros e representam o tipo de documento
           de acordo com a lista acima. O campo que armazena o valor do documento é do tipo str.
     """
-    
+
     CPF = 1
     CNPJ = 2
     OTHER = 0
-    
+
     DOCUMENT_TYPE_CHOICES = (
         (CPF, "CPF"),
         (CNPJ, "CNPJ"),
         (OTHER, "Outro"),
     )
+
 
 class Status(object):
     """Object representando diferentes status de objetos.
@@ -56,9 +55,10 @@ class Status(object):
         - ACTIVE (int): Ativo, objeto ativo.
         - INACTIVE (int): Inativo, objeto inativo.
     """
+
     ACTIVE = 1
     INACTIVE = 2
-    
+
     STATUS_CHOICES = (
         (ACTIVE, "Ativo"),
         (INACTIVE, "Inativo"),
@@ -74,6 +74,7 @@ class SignatureValidationMonths(object):
         - SIX_MONTHS (int): Seis meses de validade.
         - TWELVE_MONTHS (int): Doze meses de validade.
     """
+
     ONE_MONTH = 1
     THREE_MONTHS = 3
     SIX_MONTHS = 6
@@ -85,7 +86,7 @@ class SignatureValidationMonths(object):
         (SIX_MONTHS, "Seis meses"),
         (TWELVE_MONTHS, "Doze meses"),
     )
-    
+
 
 class LevelOfEducation(object):
     """Object representando os níveis de escolaridade.
@@ -96,6 +97,7 @@ class LevelOfEducation(object):
         - UNDERGRADUATE (int): Graduação.
         - POSTGRADUATE (int): Pós-Graduação.
     """
+
     BASIC = 1
     HIGH_SCHOOL = 2
     UNDERGRADUATE = 3

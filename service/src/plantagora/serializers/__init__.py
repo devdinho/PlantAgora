@@ -1,1 +1,2 @@
-from plantagora.serializers.GrowerSerializer import GrowerSerializer
+from plantagora.serializers.GrowerSerializer import \
+    GrowerSerializer  # noqa: F401

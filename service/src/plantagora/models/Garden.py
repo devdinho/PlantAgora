@@ -1,20 +1,22 @@
-from django.db import models
+import uuid
 
+from django.db import models
 from simple_history.models import HistoricalRecords
 
 from utils.constants import Status
-import uuid
 
 
 class Garden(models.Model):
     """Modelo de horta.
     Uma instância deste modelo representa uma horta.
-    
+
     Atributos:
         - name (str): Nome da horta.
         - code (str): Código da horta gerado ao salvar e não editável.
-        - status (str): Status da horta baseado em contants do arquivo [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
+        - status (str): Status da horta baseado em contants do arquivo
+        [contants.Status](../../utils/constants.md#service.src.utils.constants.Status).
     """
+
     history = HistoricalRecords()
 
     name = models.CharField("Name", max_length=100)
