@@ -1,16 +1,18 @@
 # PlantAgora
 
-## Visão Geral
+## Boas vindas à documentação do PlantAgora
+
+### Visão Geral
 
 PlantAgora é uma aplicação web baseada em Django e React, projetada para monitorar e gerenciar informações sobre as hortas comunitárias.
 
-## Funcionalidades
+### Funcionalidades
 
 - Autenticação de usuário e gerenciamento de perfil
 - Design responsivo para dispositivos móveis e desktop
 - Documentação do Service (Backend)
 
-## Instalação
+### Instalação
 
 1. Clone o repositório:
     ```bash
@@ -25,19 +27,7 @@ PlantAgora é uma aplicação web baseada em Django e React, projetada para moni
     docker-compose up --build
     ```
 
-## Uso
+### Uso
 
-1. Abra seu navegador web e vá para `http://localhost:8001/`.
-
-
-## Contribuindo
-
-Nós aceitamos contribuições! Por favor, leia nossas [Diretrizes de Contribuição](CONTRIBUTING.md) para mais informações.
-
-## Licença
-
-Este projeto é licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-## Contato
-
-Para quaisquer dúvidas ou feedback, por favor, entre em contato conosco.
+1. Abra seu navegador web e vá para `http://localhost:8001/` para acessar a aplicação.
+1. Abra seu navegador web e vá para `http://localhost:8002/` para acessar a documentação.
