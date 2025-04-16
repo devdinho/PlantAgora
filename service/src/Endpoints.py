@@ -88,5 +88,5 @@ Endpoints de Profile:
             "date_joined": "string"
         }
     ```
-    
+
 """

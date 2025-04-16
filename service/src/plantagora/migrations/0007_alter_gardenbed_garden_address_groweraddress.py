@@ -7,13 +7,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('plantagora', '0006_baseaddress_remove_gardenbed_address_grower_caf_and_more'),
+        ("plantagora", "0006_baseaddress_remove_gardenbed_address_grower_caf_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='gardenbed',
-            name='garden_address',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='gardenBeds', related_query_name='gardenBed', to='plantagora.gardenaddress', verbose_name='Garden Address'),
+            model_name="gardenbed",
+            name="garden_address",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="gardenBeds",
+                related_query_name="gardenBed",
+                to="plantagora.gardenaddress",
+                verbose_name="Garden Address",
+            ),
         ),
     ]

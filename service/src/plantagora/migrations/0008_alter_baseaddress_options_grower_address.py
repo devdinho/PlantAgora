@@ -7,17 +7,28 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('plantagora', '0007_alter_gardenbed_garden_address_groweraddress'),
+        ("plantagora", "0007_alter_gardenbed_garden_address_groweraddress"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='baseaddress',
-            options={'verbose_name': 'Base Address', 'verbose_name_plural': 'Base Addresses'},
+            name="baseaddress",
+            options={
+                "verbose_name": "Base Address",
+                "verbose_name_plural": "Base Addresses",
+            },
         ),
         migrations.AddField(
-            model_name='grower',
-            name='address',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='grower', related_query_name='grower', to='plantagora.baseaddress', verbose_name='Address'),
+            model_name="grower",
+            name="address",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="grower",
+                related_query_name="grower",
+                to="plantagora.baseaddress",
+                verbose_name="Address",
+            ),
         ),
     ]

@@ -1,6 +1,8 @@
-from plantagora.settings.base import *
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
+
+from plantagora.settings.base import *
 
 SITE_ID = 1
 

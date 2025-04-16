@@ -8,32 +8,59 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='State',
+            name="State",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Name')),
-                ('abbreviation', models.CharField(max_length=2, verbose_name='Abbreviation')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="Name")),
+                (
+                    "abbreviation",
+                    models.CharField(max_length=2, verbose_name="Abbreviation"),
+                ),
             ],
             options={
-                'verbose_name': 'State',
-                'verbose_name_plural': 'States',
+                "verbose_name": "State",
+                "verbose_name_plural": "States",
             },
         ),
         migrations.CreateModel(
-            name='City',
+            name="City",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Name')),
-                ('state', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cities', related_query_name='city', to='utils.state', verbose_name='State')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="Name")),
+                (
+                    "state",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="cities",
+                        related_query_name="city",
+                        to="utils.state",
+                        verbose_name="State",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'City',
-                'verbose_name_plural': 'Cities',
+                "verbose_name": "City",
+                "verbose_name_plural": "Cities",
             },
         ),
     ]

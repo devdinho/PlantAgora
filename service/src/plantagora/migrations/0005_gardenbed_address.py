@@ -7,13 +7,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('plantagora', '0004_remove_signature_endedat_alter_grower_profile_and_more'),
+        ("plantagora", "0004_remove_signature_endedat_alter_grower_profile_and_more"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='gardenbed',
-            name='address',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='gardenBeds', related_query_name='gardenBed', to='plantagora.address', verbose_name='Address'),
+            model_name="gardenbed",
+            name="address",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="gardenBeds",
+                related_query_name="gardenBed",
+                to="plantagora.address",
+                verbose_name="Address",
+            ),
         ),
     ]

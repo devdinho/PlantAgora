@@ -6,13 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('plantagora', '0002_remove_address_state'),
+        ("plantagora", "0002_remove_address_state"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='signature',
-            name='duration',
-            field=models.IntegerField(choices=[(1, 'Um mês'), (3, 'Três meses'), (6, 'Seis meses'), (12, 'Doze meses')], default=12, verbose_name='Duration'),
+            model_name="signature",
+            name="duration",
+            field=models.IntegerField(
+                choices=[
+                    (1, "Um mês"),
+                    (3, "Três meses"),
+                    (6, "Seis meses"),
+                    (12, "Doze meses"),
+                ],
+                default=12,
+                verbose_name="Duration",
+            ),
         ),
     ]

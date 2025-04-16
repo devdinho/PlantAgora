@@ -1,6 +1,5 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
-
+from django.db import models
 from simple_history.models import HistoricalRecords
 
 from utils.constants import ProfileType
@@ -11,7 +10,7 @@ class Profile(AbstractUser):
 
     O perfil de usuário é baseado no modelo de usuário padrão do Django, mas com
     campos adicionais.
-    
+
     Atributos herdados:
         - username (str): Nome de usuário.
         - first_name (str): Primeiro nome.
@@ -20,12 +19,14 @@ class Profile(AbstractUser):
         - is_staff (bool): Indica se este usuário pode acessar este site de administração.
         - is_active (bool): Indica se este usuário deve ser tratado como ativo.
         - date_joined (datetime): Data e hora em que este usuário foi adicionado.
-        
+
     Atributos adicionais:
-        - profileType (str): Tipo de perfil baseado em contants do arquivo [contants.ProfileType](../../utils/constants.md#service.src.utils.constants.ProfileType).
+        - profileType (str): Tipo de perfil baseado em contants do arquivo
+        [contants.ProfileType](../../utils/constants.md#service.src.utils.constants.ProfileType).
         - groups (Group): Grupos de permissões aos quais este usuário pertence.
         - user_permissions (Permission): Permissões específicas para este usuário
     """
+
     history = HistoricalRecords()
 
     profileType = models.IntegerField(

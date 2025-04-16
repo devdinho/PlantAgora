@@ -1,15 +1,15 @@
-from django.db import models
+import uuid
 
+from django.db import models
 from simple_history.models import HistoricalRecords
 
 from utils.models import City
-import uuid
 
 
 class BaseAddress(models.Model):
     """Modelo Base de endereço.
     Uma instância deste modelo representa um endereço de uma Instância.
-    
+
     Atributos:
         - id (uuid.UUID): ID do endereço gerado ao salvar e não editável.
         - street (str): Rua do endereço.
@@ -18,12 +18,13 @@ class BaseAddress(models.Model):
         - zip_code (str): CEP do endereço.
         - city (str): Cidade do endereço.
     """
+
     history = HistoricalRecords()
 
     id = models.UUIDField("ID", primary_key=True, default=uuid.uuid4, editable=False)
 
     street = models.CharField("Street", max_length=100)
-    
+
     number = models.CharField("Number", max_length=10)
 
     complement = models.CharField("Complement", max_length=100, blank=True, null=True)

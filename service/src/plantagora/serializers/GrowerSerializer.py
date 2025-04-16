@@ -2,11 +2,13 @@ from rest_framework import serializers
 
 from plantagora.models import Grower
 
+
 class GrowerSerializer(serializers.ModelSerializer):
     """Serializer para o modelo Grower (Hortelão)."""
+
     level_of_education = serializers.SerializerMethodField()
     document_type = serializers.SerializerMethodField()
-    
+
     class Meta:
         model = Grower
         fields = [

@@ -3,9 +3,9 @@
 set -e
 
 echo "Executando Black"
-black -q service/src
+black -q $1
 echo "Executando Isort"
-isort -q service/src
+isort -q $1
 echo "Executando Flake8"
-flake8 --ignore=E211,E999,F821,W503,E203 --max-line-length=121 --exclude=migrations,settings,__pycache__,tests service/src
+flake8 --ignore=E211,E999,F821,W503,E203 --max-line-length=121 --exclude=migrations,settings,__pycache__,tests,'URLs e Endpoints.py' $1
 echo "Fim"

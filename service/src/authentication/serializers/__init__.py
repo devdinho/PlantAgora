@@ -1,1 +1,2 @@
-from authentication.serializers.ProfileSerializer import ProfileSerializer
+from authentication.serializers.ProfileSerializer import \
+    ProfileSerializer  # noqa: F401
