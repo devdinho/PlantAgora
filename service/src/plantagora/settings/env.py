@@ -14,6 +14,7 @@ POSTGRES_DB = "plantagora_db"
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 DB_HOST = "plantagora_db"
+DB_PORT = os.getenv("DB_PORT")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
@@ -33,6 +34,6 @@ DATABASES = {
         "USER": POSTGRES_USER,
         "PASSWORD": POSTGRES_PASSWORD,
         "HOST": DB_HOST,
-        "PORT": "5432",
+        "PORT": DB_PORT,
     }
 }
