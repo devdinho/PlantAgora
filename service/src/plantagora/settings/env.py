@@ -20,6 +20,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "localhost",
+    "plantagora.dinho.dev"
 ]
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8001", "http://0.0.0.0:8001"]
