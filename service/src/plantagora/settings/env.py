@@ -23,7 +23,7 @@ ALLOWED_HOSTS = [
     "plantagora.dinho.dev"
 ]
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8001", "http://0.0.0.0:8001"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8001", "http://0.0.0.0:8001", "https://plantagora.dinho.dev"]
 
 CORS_ALLOWED_ORIGINS = CSRF_TRUSTED_ORIGINS
 
