@@ -29,6 +29,7 @@ jobs:
             rm -f .env
             printf 'POSTGRES_USER=%s\n' '${{ secrets.POSTGRES_USER }}' >> .env
             printf 'POSTGRES_PASSWORD=%s\n' '${{ secrets.POSTGRES_PASSWORD }}' >> .env
+            printf 'DB_PORT=%s\n' '${{ secrets.DB_PORT }}' >> .env
             printf 'DEBUG=%s\n' '${{ secrets.DEBUG }}' >> .env
             printf 'SECRET_KEY=%s\n' '${{ secrets.SECRET_KEY }}' >> .env
 
