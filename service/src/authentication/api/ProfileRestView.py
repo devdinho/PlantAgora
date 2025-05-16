@@ -32,6 +32,12 @@ class ProfileRestView(viewsets.ModelViewSet):
     def get_queryset(self):
         return Profile.objects.filter(id=self.request.user.id)
 
+    def retrieve(self, request, *args, **kwargs):
+        print(f'Bateu no retrieve')
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
     def create(self, request, *args, **kwargs):
         raise MethodNotAllowed("POST", detail="Create not allowed")
 

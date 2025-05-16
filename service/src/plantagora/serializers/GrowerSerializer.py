@@ -8,6 +8,7 @@ class GrowerSerializer(serializers.ModelSerializer):
 
     level_of_education = serializers.SerializerMethodField()
     document_type = serializers.SerializerMethodField()
+    gender = serializers.SerializerMethodField()
 
     class Meta:
         model = Grower
@@ -18,6 +19,7 @@ class GrowerSerializer(serializers.ModelSerializer):
             "level_of_education",
             "document",
             "document_type",
+            "gender",
         ]
         read_only_fields = ["id"]
 
@@ -28,3 +30,7 @@ class GrowerSerializer(serializers.ModelSerializer):
     def get_document_type(self, instance):
         """Retorna o tipo de documento do Grower (Hortelão)."""
         return instance.get_documentType_display()
+
+    def get_gender(self, instance):
+        """Retorna o gênero do Grower (Hortelão)."""
+        return instance.get_gender_display()

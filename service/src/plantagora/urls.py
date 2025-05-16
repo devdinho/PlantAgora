@@ -15,9 +15,12 @@ urlpatterns = [
 ]
 
 router = DefaultRouter(trailing_slash=False)
+
+# Cadastro de novo usuário realizado por um desenvolvedor pelo painel administrativo
 router.register(
     "api/register/", CreateProfileRestView, basename="CreateProfileRestView"
 )
+
 router.register("api/profile", ProfileRestView, basename="ProfileRestView")
 
 urlpatterns += router.urls

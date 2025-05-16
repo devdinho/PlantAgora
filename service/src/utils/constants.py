@@ -39,12 +39,10 @@ class DocumentType(object):
 
     CPF = 1
     CNPJ = 2
-    OTHER = 0
 
     DOCUMENT_TYPE_CHOICES = (
         (CPF, "CPF"),
         (CNPJ, "CNPJ"),
-        (OTHER, "Outro"),
     )
 
 
@@ -108,4 +106,24 @@ class LevelOfEducation(object):
         (HIGH_SCHOOL, "Ensino Médio"),
         (UNDERGRADUATE, "Graduação"),
         (POSTGRADUATE, "Pós-Graduação"),
+    )
+
+
+class Gender(object):
+    """Object representando os gêneros.
+
+    Atributos:
+        - MALE (int): Masculino.
+        - FEMALE (int): Feminino.
+        - OTHER (int): Outro.
+    """
+    
+    MALE = 1
+    FEMALE = 2
+    OTHER = 3
+    
+    GENDER_CHOICES = (
+        (MALE, "Masculino"),
+        (FEMALE, "Feminino"),
+        (OTHER, "Outro"),
     )
