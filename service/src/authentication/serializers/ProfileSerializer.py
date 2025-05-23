@@ -3,7 +3,7 @@ from datetime import datetime
 from rest_framework import serializers
 
 from authentication.models import Profile
-from authentication.serializers import SimpleDetailError
+from utils.exceptions import SimpleDetailError
 from plantagora.models import BaseAddress, Grower
 from plantagora.serializers import GrowerSerializer
 from utils.models import City
