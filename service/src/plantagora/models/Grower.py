@@ -5,7 +5,7 @@ from simple_history.models import HistoricalRecords
 
 from authentication.models import Profile
 from plantagora.models import BaseAddress
-from utils.constants import DocumentType, LevelOfEducation, Gender
+from utils.constants import Gender, LevelOfEducation
 
 
 class Grower(models.Model):
@@ -47,19 +47,29 @@ class Grower(models.Model):
         default=LevelOfEducation.BASIC,
     )
 
-    document = models.CharField("Document", max_length=20)
-    documentType = models.IntegerField(
-        "Document Type",
-        choices=DocumentType.DOCUMENT_TYPE_CHOICES,
-        default=DocumentType.CPF,
-    )
+    document = models.CharField("Document", max_length=11, unique=True)
 
     gender = models.IntegerField(
         "Gender",
         choices=Gender.GENDER_CHOICES,
         default=Gender.OTHER,
     )
-    
+
+    birthDate = models.DateField(
+        "Birth Date",
+        help_text="Data de nascimento do produtor.",
+        blank=True,
+        null=True,
+    )
+
+    cell = models.CharField(
+        "Cell",
+        max_length=11,
+        help_text="Número de celular do produtor.",
+        blank=True,
+        null=True,
+    )
+
     profile = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
@@ -69,19 +79,21 @@ class Grower(models.Model):
     registeredAt = models.DateTimeField(
         "Registered At", auto_now_add=True, editable=False, blank=True, null=True
     )
-    
-    updatedAt = models.DateTimeField("Updated At", auto_now=True, editable=False, blank=True, null=True)
-    
+
+    updatedAt = models.DateTimeField(
+        "Updated At", auto_now=True, editable=False, blank=True, null=True
+    )
+
     registerApproved = models.BooleanField(
         "Register Approved",
         default=False,
         help_text="Indica se o registro do produtor foi aprovado.",
     )
-    
+
     registerApprovedAt = models.DateTimeField(
         "Register Approved At", null=True, blank=True
     )
-    
+
     registerApprovedBy = models.ForeignKey(
         Profile,
         on_delete=models.CASCADE,
@@ -90,7 +102,7 @@ class Grower(models.Model):
         blank=True,
         related_name="approved_by",
     )
-    
+
     def __str__(self):
         return f"{self.profile.get_full_name()} ({self.profile.username})"
 
@@ -101,8 +113,9 @@ class Grower(models.Model):
 
         if not self.registerApprovedAt and self.registerApproved:
             self.registerApprovedAt = self.updatedAt
-            
+
         super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Grower"
         verbose_name_plural = "Growers"

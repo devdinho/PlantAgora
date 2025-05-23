@@ -44,7 +44,6 @@ class GrowerAdmin(admin.ModelAdmin):
     list_display = (
         "profile",
         "document",
-        "documentType",
     )
     search_fields = (
         "profile",

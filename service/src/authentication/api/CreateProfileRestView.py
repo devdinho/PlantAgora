@@ -2,8 +2,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 
 from authentication.models import Profile
-from authentication.serializers import ProfileSerializer
-from django.http import JsonResponse
+from authentication.serializers import RegisterSerializer
 
 
 class CreateProfileRestView(viewsets.ModelViewSet):
@@ -23,22 +22,5 @@ class CreateProfileRestView(viewsets.ModelViewSet):
 
     permission_classes = [AllowAny]
     queryset = Profile.objects.all().order_by("-date_joined")
-    serializer_class = ProfileSerializer
+    serializer_class = RegisterSerializer
     http_method_names = ["post"]
-
-    def create(self, request, *args, **kwargs):
-        """Cria um novo usuário com os dados fornecidos no payload.
-
-        Args:
-            request: O objeto de solicitação HTTP.
-            *args: Argumentos adicionais.
-            **kwargs: Argumentos nomeados adicionais.
-
-        Returns:
-            Response: A resposta HTTP com os dados do usuário criado.
-        """
-        
-        print(request.data)
-        
-        return JsonResponse({})
-        return super().create(request, *args, **kwargs)

@@ -117,11 +117,11 @@ class Gender(object):
         - FEMALE (int): Feminino.
         - OTHER (int): Outro.
     """
-    
+
     MALE = 1
     FEMALE = 2
     OTHER = 3
-    
+
     GENDER_CHOICES = (
         (MALE, "Masculino"),
         (FEMALE, "Feminino"),

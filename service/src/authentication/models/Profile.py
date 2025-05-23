@@ -35,6 +35,14 @@ class Profile(AbstractUser):
         default=ProfileType.GARDENER,
     )
 
+    profilePicture = models.ImageField(
+        "Foto de Perfil",
+        upload_to="profile_pictures/",
+        blank=True,
+        null=True,
+        help_text="A foto de perfil do usuário.",
+    )
+
     groups = models.ManyToManyField(
         Group,
         verbose_name="Grupos de Permissões",
