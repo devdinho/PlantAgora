@@ -9,6 +9,7 @@ on:
       - main
       - develop
 
+
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
@@ -17,31 +18,34 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx (para builds multi-arch se precisar)
-        uses: docker/setup-buildx-action@v2
-
-      - name: Set up Docker Compose
-        uses: docker/compose-action@v2
-        with:
-          version: 'v2.20.2'  # ou outra versão que preferir
+      - name: Show Docker Compose version
+        run: docker compose version
 
       - name: Build and start lint container
-        run: docker-compose up --build -d lint
+        run: docker compose up --build -d lint
 
-      - name: Run lint and wait for completion
+      - name: Wait for lint container to finish
         run: |
           docker logs -f plantagora_lint
           docker wait plantagora_lint
-          docker inspect plantagora_lint --format='{{.State.ExitCode}}' | grep '^0$'
+          exit_code=$(docker inspect plantagora_lint --format='{{.State.ExitCode}}')
+          if [ "$exit_code" -ne 0 ]; then
+            echo "Lint container failed"
+            exit $exit_code
+          fi
 
-      - name: Build and start test container (aguardando banco)
-        run: docker-compose up --build -d db test
+      - name: Build and start db and test containers
+        run: docker compose up --build -d db test
 
-      - name: Wait for tests to finish
+      - name: Wait for test container to finish
         run: |
           docker logs -f plantagora_test
           docker wait plantagora_test
-          docker inspect plantagora_test --format='{{.State.ExitCode}}' | grep '^0$'
+          exit_code=$(docker inspect plantagora_test --format='{{.State.ExitCode}}')
+          if [ "$exit_code" -ne 0 ]; then
+            echo "Test container failed"
+            exit $exit_code
+          fi
 
       - name: Tear down containers
-        run: docker-compose down
+        run: docker compose down
