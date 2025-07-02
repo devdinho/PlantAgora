@@ -21,9 +21,9 @@ jobs:
         run: |
           echo "POSTGRES_USER=postgres" >> .env
           echo "POSTGRES_PASSWORD=postgres" >> .env
-          echo "POSTGRES_DB=plantagora_db" >> .env
-          echo "DB_HOST=plantagora_db" >> .env
-          echo "DB_PORT=5432" >> .env
+          echo "DEBUG=True" >> .env
+          echo "SECRET_KEY=SECRET_KEY_CI" >> .env
+          echo "DB_PORT=5433" >> .env
 
       - name: Show Docker Compose version
         run: docker compose version
