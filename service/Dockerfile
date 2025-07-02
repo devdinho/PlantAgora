@@ -4,6 +4,7 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV PYTHONPATH="/app/src"
 
 RUN apk add --no-cache gcc musl-dev libffi-dev openssl-dev postgresql-dev \
     && pip install poetry black isort flake8\

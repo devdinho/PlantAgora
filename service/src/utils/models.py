@@ -24,7 +24,7 @@ class City(models.Model):
         verbose_name_plural = "Cities"
 
     def __str__(self):
-        return f"{self.name} - {self.state.abbreviation}"
+        return f"{self.name} / {self.state.abbreviation}"
 
 
 class State(models.Model):

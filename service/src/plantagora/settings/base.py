@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "plantagora.wsgi.application"
+ASGI_APPLICATION = "plantagora.asgi.application"
 
 AUTH_USER_MODEL = "authentication.profile"
 
@@ -110,8 +110,8 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'plantagora', 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "plantagora", "static")
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

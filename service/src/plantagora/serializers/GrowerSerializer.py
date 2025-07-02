@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
 from plantagora.models import Grower
-
 from plantagora.serializers import SocioeconomicProfileSerializer
+
 
 class GrowerSerializer(serializers.ModelSerializer):
     """Serializer para o modelo Grower (Hortelão)."""
@@ -43,5 +43,5 @@ class GrowerSerializer(serializers.ModelSerializer):
         if instance.socioeconomic_profiles:
             last_profile = instance.socioeconomic_profiles.first()
             return SocioeconomicProfileSerializer(last_profile).data
-            
+
         return None

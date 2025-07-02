@@ -22,4 +22,5 @@ if not Profile.objects.filter(username='admin').exists():
 "
 
 # gunicorn plantagora.wsgi:application --bind 0.0.0.0:8001 --chdir src
-python src/manage.py runserver 0.0.0.0:8001
+# python src/manage.py runserver 0.0.0.0:8001
+uvicorn src.plantagora.asgi:application --host 0.0.0.0 --port 8001 --reload --workers 4
