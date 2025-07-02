@@ -14,22 +14,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Docker Buildx (para builds multi-arch se precisar)
+        uses: docker/setup-buildx-action@v2
+
+      - name: Set up Docker Compose
+        uses: docker/compose-action@v2
         with:
-          python-version: '3.12'
+          version: 'v2.20.2'  # ou outra versão que preferir
 
-      - name: Install dependencies
+      - name: Build and start lint container
+        run: docker-compose up --build -d lint
+
+      - name: Run lint and wait for completion
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install black isort flake8 pytest
+          docker logs -f plantagora_lint
+          docker wait plantagora_lint
+          docker inspect plantagora_lint --format='{{.State.ExitCode}}' | grep '^0$'
 
-      - name: Run Lint
-        run: ./scripts/lint.sh .
+      - name: Build and start test container (aguardando banco)
+        run: docker-compose up --build -d db test
 
-      - name: Run Unit Tests
-        run: ./scripts/run_unit_tests.sh
+      - name: Wait for tests to finish
+        run: |
+          docker logs -f plantagora_test
+          docker wait plantagora_test
+          docker inspect plantagora_test --format='{{.State.ExitCode}}' | grep '^0$'
+
+      - name: Tear down containers
+        run: docker-compose down

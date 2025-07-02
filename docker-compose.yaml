@@ -39,5 +39,27 @@ services:
     command: mkdocs serve --dev-addr=0.0.0.0:8002 --dirtyreload --watch /app/docs
     restart: always
 
+  lint:
+    container_name: plantagora_lint
+    build:
+      context: ./service
+      dockerfile: Dockerfile
+    command: /bin/sh -c "scripts/start-lint.sh src"
+    volumes:
+      - ./service:/app
+    env_file: '.env'
+    restart: on-failure
+    
+  test:
+    container_name: plantagora_test
+    build:
+      context: ./service
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    env_file: '.env'
+    command: /bin/sh -c "scripts/run_unit_tests.sh"
+
+
 volumes:
   postgres_data:
