@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import status, viewsets
 from rest_framework.exceptions import (MethodNotAllowed, NotFound,
                                        PermissionDenied)
@@ -32,6 +33,11 @@ class ProfileRestView(viewsets.ModelViewSet):
     def get_queryset(self):
         return Profile.objects.filter(id=self.request.user.id)
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def create(self, request, *args, **kwargs):
         raise MethodNotAllowed("POST", detail="Create not allowed")
 
@@ -45,7 +51,7 @@ class ProfileRestView(viewsets.ModelViewSet):
         return Response(profile, status=status.HTTP_200_OK)
 
     def update(self, request, *args, **kwargs):
-        instance = Profile.objects.get_object_or_404(id=kwargs.get("pk"))
+        instance = get_object_or_404(Profile, id=kwargs.get("pk"))
 
         if instance.id != request.user.id and not request.user.is_superuser:
             raise PermissionDenied(detail="You can only update your own profile!")

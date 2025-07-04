@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 cd src
-python manage.py test --settings=plantagora.settings
 pytest --ds=plantagora.settings --durations=0 -p no:warnings

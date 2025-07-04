@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 
 from authentication.models import Profile
-from authentication.serializers import ProfileSerializer
+from authentication.serializers import RegisterSerializer
 
 
 class CreateProfileRestView(viewsets.ModelViewSet):
@@ -22,5 +22,5 @@ class CreateProfileRestView(viewsets.ModelViewSet):
 
     permission_classes = [AllowAny]
     queryset = Profile.objects.all().order_by("-date_joined")
-    serializer_class = ProfileSerializer
+    serializer_class = RegisterSerializer
     http_method_names = ["post"]

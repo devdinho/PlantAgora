@@ -37,6 +37,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = (
         "username",
         "profileType",
+        "profilePicture",
         "first_name",
         "last_name",
         "email",
@@ -53,6 +54,16 @@ class ProfileAdmin(admin.ModelAdmin):
         (
             "Permissões",
             {"fields": ("is_staff", "is_active", "groups", "user_permissions")},
+        ),
+        ("Profile", {"fields": ("profileType", "profilePicture")}),
+        (
+            "Datas",
+            {
+                "fields": (
+                    "last_login",
+                    "date_joined",
+                )
+            },
         ),
     )
     icon_name = "person"

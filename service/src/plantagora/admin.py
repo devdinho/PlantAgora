@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from plantagora.models import (BaseAddress, Garden, GardenAddress, GardenBed,
-                               Grower, Signature)
+                               Grower, Signature, SocioeconomicProfile,
+                               SocioeconomicQuestionnaire)
 
 
 class GardenAddressInline(admin.TabularInline):
@@ -44,7 +45,8 @@ class GrowerAdmin(admin.ModelAdmin):
     list_display = (
         "profile",
         "document",
-        "documentType",
+        "registerApproved",
+        "registerApprovedAt"
     )
     search_fields = (
         "profile",
@@ -96,9 +98,29 @@ class GardenBedAdmin(admin.ModelAdmin):
     icon_name = "view_module"
 
 
+class SocioeconomicProfileAdmin(admin.ModelAdmin):
+    list_display = ("id", "grower", "questionaire", "status", "submitted_at")
+    search_fields = ("grower__profile__name", "questionaire__title")
+    list_filter = ("status",)
+    readonly_fields = ("id", "submitted_at", "updatedAt")
+    autocomplete_fields = ("grower", "questionaire")
+    icon_name = "assessment"
+
+
+class SocioeconomicQuestionnaireAdmin(admin.ModelAdmin):
+    list_display = ("id", "title", "status", "releasedAt", "updatedAt")
+    search_fields = ("title",)
+    list_filter = ("status",)
+    readonly_fields = ("id", "releasedAt", "updatedAt")
+    icon_name = "question_answer"
+
+
 admin.site.register(Garden, GardenAdmin)
 admin.site.register(GardenAddress, GardenAddressAdmin)
 admin.site.register(BaseAddress, BaseAddressAdmin)
 admin.site.register(Grower, GrowerAdmin)
 admin.site.register(Signature, SignatureAdmin)
 admin.site.register(GardenBed, GardenBedAdmin)
+
+admin.site.register(SocioeconomicProfile, SocioeconomicProfileAdmin)
+admin.site.register(SocioeconomicQuestionnaire, SocioeconomicQuestionnaireAdmin)

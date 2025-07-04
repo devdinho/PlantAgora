@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-PlantAgora é uma aplicação web baseada em Django e React, projetada para monitorar e gerenciar informações sobre as hortas comunitárias.
+PlantAgora é uma aplicação web baseada em Django e React Native, projetada para monitorar e gerenciar informações sobre as hortas comunitárias.
 
 ## Funcionalidades
 
