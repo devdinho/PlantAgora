@@ -3,9 +3,9 @@ from datetime import datetime
 from rest_framework import serializers
 
 from authentication.models import Profile
-from utils.exceptions import SimpleDetailError
 from plantagora.models import BaseAddress, Grower
 from plantagora.serializers import GrowerSerializer
+from utils.exceptions import SimpleDetailError
 from utils.models import City
 
 
@@ -125,6 +125,7 @@ class RegisterSerializer(serializers.Serializer):
                 state__abbreviation=validated_data.get("city").split("/")[-1].strip(),
             ),
         )
+
         newAddress.save()
 
         newGrower = Grower(

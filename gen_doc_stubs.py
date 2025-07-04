@@ -6,7 +6,7 @@ list_of_files = ["__init__.py", "apps.py", "gunicorn_config.py", "urls.py", "vie
 src_root = Path("service/src")
 
 for path in src_root.glob("**/*.py"):
-    if path.name in list_of_files or "migrations" in path.parts:
+    if path.name in list_of_files or "migrations" in path.parts or "test_" in path.name:
         continue
     
     doc_path = Path("Codebase", path.relative_to(src_root)).with_suffix(".md")

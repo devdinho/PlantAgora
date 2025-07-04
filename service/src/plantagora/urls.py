@@ -7,6 +7,8 @@ from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView)
 
 from authentication.api import CreateProfileRestView, ProfileRestView
+from plantagora.api import (SocioeconomicProfileRestView,
+                            SocioeconomicQuestionnaireRestView)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -15,10 +17,23 @@ urlpatterns = [
 ]
 
 router = DefaultRouter(trailing_slash=False)
+# Profile creation endpoint
 router.register("api/register", CreateProfileRestView, basename="CreateProfileRestView")
-
 router.register("api/profile", ProfileRestView, basename="ProfileRestView")
+##
 
+# Socioeconomic Questionnaire endpoints
+router.register(
+    "api/socioeconomic-questionnaire",
+    SocioeconomicQuestionnaireRestView,
+    basename="SocioeconomicQuestionnaireRestView",
+)
+router.register(
+    "api/socioeconomic-profile",
+    SocioeconomicProfileRestView,
+    basename="SocioeconomicProfileRestView",
+)
+##
 urlpatterns += router.urls
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
