@@ -45,6 +45,8 @@ class GrowerAdmin(admin.ModelAdmin):
     list_display = (
         "profile",
         "document",
+        "registerApproved",
+        "registerApprovedAt"
     )
     search_fields = (
         "profile",
