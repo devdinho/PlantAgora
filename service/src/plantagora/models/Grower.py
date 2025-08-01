@@ -117,5 +117,5 @@ class Grower(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = "Grower"
-        verbose_name_plural = "Growers"
+        verbose_name = "Hortelão"
+        verbose_name_plural = "Hortelões"

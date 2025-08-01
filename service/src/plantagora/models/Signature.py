@@ -57,5 +57,5 @@ class Signature(models.Model):
     updatedAt = models.DateTimeField("Updated At", auto_now=True)
 
     class Meta:
-        verbose_name = "Signature"
-        verbose_name_plural = "Signatures"
+        verbose_name = "Assinatura"
+        verbose_name_plural = "Assinaturas"

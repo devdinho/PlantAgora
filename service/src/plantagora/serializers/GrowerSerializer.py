@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from plantagora.models import Grower
 from plantagora.serializers import SocioeconomicProfileSerializer
 
@@ -40,7 +41,11 @@ class GrowerSerializer(serializers.ModelSerializer):
     def get_socioeconomic_profile(self, instance):
         if instance.socioeconomic_profiles:
             last_profile = instance.socioeconomic_profiles.first()
-            return SocioeconomicProfileSerializer(last_profile).data if last_profile else None
+            return (
+                SocioeconomicProfileSerializer(last_profile).data
+                if last_profile
+                else None
+            )
         return None
 
     def get_birthDate(self, instance):

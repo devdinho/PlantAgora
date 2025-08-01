@@ -64,5 +64,5 @@ class Profile(AbstractUser):
         return f"{self.get_full_name()} ({self.username})"
 
     class Meta:
-        verbose_name = "Profile"
-        verbose_name_plural = "Profiles"
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfis"

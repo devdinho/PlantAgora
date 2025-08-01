@@ -28,8 +28,8 @@ class Garden(models.Model):
     )
 
     class Meta:
-        verbose_name = "Garden"
-        verbose_name_plural = "Gardens"
+        verbose_name = "Horta"
+        verbose_name_plural = "Hortas"
 
     def __str__(self):
         return "{}({})".format(self.name, self.code)

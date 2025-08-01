@@ -39,8 +39,8 @@ class GardenAddress(BaseAddress):
     )
 
     class Meta:
-        verbose_name = "Garden Address"
-        verbose_name_plural = "Garden Addresses"
+        verbose_name = "Endereço da Horta"
+        verbose_name_plural = "Endereços das Hortas"
 
     def __str__(self):
         return f"{self.street}, {self.number} ({self.zip_code})- {self.city}"
