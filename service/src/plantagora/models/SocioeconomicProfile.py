@@ -57,7 +57,7 @@ class SocioeconomicProfile(models.Model):
     updatedAt = models.DateTimeField("Updated At", auto_now=True)
 
     class Meta:
-        verbose_name = "Socioeconomic Profile"
-        verbose_name_plural = "Socioeconomic Profiles"
+        verbose_name = "Perfil Socioeconômico"
+        verbose_name_plural = "Perfis Socioeconômicos"
         unique_together = (("questionaire", "grower"),)
         ordering = ["-submitted_at"]

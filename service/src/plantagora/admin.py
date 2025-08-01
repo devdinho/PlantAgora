@@ -42,12 +42,7 @@ class GardenAddressAdmin(admin.ModelAdmin):
 
 
 class GrowerAdmin(admin.ModelAdmin):
-    list_display = (
-        "profile",
-        "document",
-        "registerApproved",
-        "registerApprovedAt"
-    )
+    list_display = ("profile", "document", "registerApproved", "registerApprovedAt")
     search_fields = (
         "profile",
         "document",

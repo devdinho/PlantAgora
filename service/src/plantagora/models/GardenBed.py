@@ -58,8 +58,8 @@ class GardenBed(models.Model):
     )
 
     class Meta:
-        verbose_name = "Garden Bed"
-        verbose_name_plural = "Garden Beds"
+        verbose_name = "Canteiro"
+        verbose_name_plural = "Canteiros"
 
     def __str__(self):
         return "{} - {} ({})".format(self.code, self.garden, self.garden_address)

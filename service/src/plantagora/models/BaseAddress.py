@@ -40,8 +40,8 @@ class BaseAddress(models.Model):
     )
 
     class Meta:
-        verbose_name = "Base Address"
-        verbose_name_plural = "Base Addresses"
+        verbose_name = "Endereço"
+        verbose_name_plural = "Endereços"
 
     def __str__(self):
         return f"{self.street}, {self.number} ({self.zip_code})- {self.city}"

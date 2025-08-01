@@ -20,8 +20,8 @@ class City(models.Model):
     )
 
     class Meta:
-        verbose_name = "City"
-        verbose_name_plural = "Cities"
+        verbose_name = "Cidade"
+        verbose_name_plural = "Cidades"
 
     def __str__(self):
         return f"{self.name} / {self.state.abbreviation}"
@@ -40,8 +40,8 @@ class State(models.Model):
     abbreviation = models.CharField("Abbreviation", max_length=2)
 
     class Meta:
-        verbose_name = "State"
-        verbose_name_plural = "States"
+        verbose_name = "Estado"
+        verbose_name_plural = "Estados"
 
     def __str__(self):
         return f"{self.name}({self.abbreviation})"

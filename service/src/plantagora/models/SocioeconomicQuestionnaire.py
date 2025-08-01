@@ -55,5 +55,5 @@ class SocioeconomicQuestionnaire(models.Model):
     updatedAt = models.DateTimeField("Updated At", auto_now=True)
 
     class Meta:
-        verbose_name = "Socioeconomic Questionnaire"
-        verbose_name_plural = "Socioeconomic Questionnaires"
+        verbose_name = "Questionário Socioeconômico"
+        verbose_name_plural = "Questionários Socioeconômicos"
